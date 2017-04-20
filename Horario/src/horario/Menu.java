@@ -26,13 +26,15 @@ public class Menu {
                 opcionUno();
                 break;
             case 2:
-                System.out.println("1. Agregar clase al horario");
-                System.out.println("2. Consultar horario");
+                opcionDos();
                 break;
             case 3:
                 break;
             case 4:
                 System.out.println("Gracias por usar el programa");
+                break;
+            default:
+                System.out.println("Opción inválida");
                 break;
         }
     }
@@ -77,10 +79,66 @@ public class Menu {
         }
     }
     
-    public void opcionDos() {
+    public void opcionDos() throws SQLException {
+        
+        ConsultarProfesor cp = new ConsultarProfesor();
+        AgregarExperienciaEducativa aee = new AgregarExperienciaEducativa();
+        
+        //Atributos ExperienciaEducativa
         int nrc;
         String nombreEE;
         int creditosEE;
+        
+        //Atributos Horario
+        String horaInicio;
+        String horaFin;
+        String dia;
+        
+        //Atributos SalonClases
+        int noSalonClases;
+        
+        System.out.println("1. Agregar Experiencia Educativa");
+        System.out.println("2. Agregar Hora");
+        System.out.println("3. Agregar Salón de clases");
+        System.out.println("4. Agregar Día de clases");
+        System.out.println("5. Consultar horario");
+        op = sc.nextInt();
+        sc.nextLine();
+        
+        switch(op) {
+            case 1:
+                System.out.println("Lista de profesores: ");
+                cp.consultarLista();
+                System.out.println("Número del profesor que dará la EE: ");
+                int num = sc.nextInt();
+                sc.nextLine();
+                System.out.println("NRC de la EE: ");
+                nrc = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Nombre de la EE: ");
+                nombreEE = sc.nextLine();
+                System.out.println("Créditos que otorga la EE: ");
+                creditosEE = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Hora de inicio de la EE (24 horas): ");
+                horaInicio = sc.nextLine();
+                System.out.println("Hora de fin de la EE (24 horas): ");
+                horaFin = sc.nextLine();
+                System.out.println("Día que se impartirá la EE: ");
+                dia = sc.nextLine();
+                System.out.println("Salón en el que se impartirá la EE: ");
+                noSalonClases = sc.nextInt();
+                sc.nextLine();
+                aee.agregar(nrc, nombreEE, creditosEE, horaInicio, horaFin, dia, noSalonClases, num);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Opción inválida");
+                break;
+        }
         
     }
 }

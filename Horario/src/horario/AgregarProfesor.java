@@ -14,10 +14,6 @@ public class AgregarProfesor {
     static Connection con = null; 
     static Statement s = null;
     
-    public static void main (String args[]) {
-        
-    }
-    
     public int agregar(String nombre, String paterno, String materno, String correo) throws SQLException {
         String sentencia;
         sentencia = "INSERT INTO Profesor (nombreProfesor, apPaternoProfesor, apMaternoProfesor"

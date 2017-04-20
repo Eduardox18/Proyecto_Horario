@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `horario`.`Horario` (
   `idHorario` INT NOT NULL AUTO_INCREMENT,
   `horaInicioHorario` VARCHAR(10) NOT NULL,
   `horaFinHorario` VARCHAR(10) NOT NULL,
-  `diaHorario` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idHorario`))
 ENGINE = InnoDB;
 
@@ -54,7 +53,7 @@ ENGINE = InnoDB;
 -- Table `horario`.`SalonClases`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `horario`.`SalonClases` (
-  `idSalonClases` INT NOT NULL,
+  `idSalonClases` INT NOT NULL AUTO_INCREMENT,
   `noSalonClases` INT NOT NULL,
   PRIMARY KEY (`idSalonClases`))
 ENGINE = InnoDB;
@@ -179,6 +178,38 @@ CREATE TABLE IF NOT EXISTS `horario`.`Profesor_has_ExperienciaEducativa1` (
   CONSTRAINT `fk_Profesor_has_ExperienciaEducativa1_ExperienciaEducativa1`
     FOREIGN KEY (`ExperienciaEducativa_nrc`)
     REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `horario`.`Dia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `horario`.`Dia` (
+  `idDia` INT NOT NULL AUTO_INCREMENT,
+  `nombreDia` VARCHAR(20) NULL,
+  PRIMARY KEY (`idDia`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `horario`.`Horario_has_Dia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `horario`.`Horario_has_Dia` (
+  `Horario_idHorario` INT NOT NULL,
+  `Dia_idDia` INT NOT NULL,
+  PRIMARY KEY (`Horario_idHorario`, `Dia_idDia`),
+  INDEX `fk_Horario_has_Dia_Dia1_idx` (`Dia_idDia` ASC),
+  INDEX `fk_Horario_has_Dia_Horario1_idx` (`Horario_idHorario` ASC),
+  CONSTRAINT `fk_Horario_has_Dia_Horario1`
+    FOREIGN KEY (`Horario_idHorario`)
+    REFERENCES `horario`.`Horario` (`idHorario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Horario_has_Dia_Dia1`
+    FOREIGN KEY (`Dia_idDia`)
+    REFERENCES `horario`.`Dia` (`idDia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
