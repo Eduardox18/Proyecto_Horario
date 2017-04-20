@@ -18,13 +18,12 @@ USE `horario` ;
 -- Table `horario`.`Profesor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `horario`.`Profesor` (
-  `noPersonal` INT NOT NULL,
+  `idProfesor` INT NOT NULL AUTO_INCREMENT,
   `nombreProfesor` VARCHAR(45) NOT NULL,
   `apPaternoProfesor` VARCHAR(45) NOT NULL,
   `apMaternoProfesor` VARCHAR(45) NULL,
-  `fechaNacProfesor` DATE NOT NULL,
   `emailProfesor` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`noPersonal`))
+  PRIMARY KEY (`idProfesor`))
 ENGINE = InnoDB;
 
 
@@ -33,8 +32,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `horario`.`Horario` (
   `idHorario` INT NOT NULL AUTO_INCREMENT,
-  `horaInicioHorario` TIME NOT NULL,
-  `horaFinHorario` VARCHAR(45) NOT NULL,
+  `horaInicioHorario` VARCHAR(10) NOT NULL,
+  `horaFinHorario` VARCHAR(10) NOT NULL,
   `diaHorario` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idHorario`))
 ENGINE = InnoDB;
@@ -69,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `horario`.`Alumno` (
   `nombreAlumno` VARCHAR(45) NOT NULL,
   `apPaternoAlumno` VARCHAR(45) NOT NULL,
   `apMaternoAlumno` VARCHAR(45) NULL,
-  `fechaNacAlumno` DATE NOT NULL,
+  `fechaNacAlumno` VARCHAR(45) NOT NULL,
   `emailAlumno` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`))
 ENGINE = InnoDB;
@@ -86,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `horario`.`Profesor_has_ExperienciaEducativa` (
   INDEX `fk_Profesor_has_ExperienciaEducativa_Profesor_idx` (`Profesor_noPersonal` ASC),
   CONSTRAINT `fk_Profesor_has_ExperienciaEducativa_Profesor`
     FOREIGN KEY (`Profesor_noPersonal`)
-    REFERENCES `horario`.`Profesor` (`noPersonal`)
+    REFERENCES `horario`.`Profesor` (`idProfesor`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Profesor_has_ExperienciaEducativa_ExperienciaEducativa1`
@@ -158,6 +157,28 @@ CREATE TABLE IF NOT EXISTS `horario`.`ExperienciaEducativa_has_SalonClases` (
   CONSTRAINT `fk_ExperienciaEducativa_has_SalonClases_SalonClases1`
     FOREIGN KEY (`SalonClases_idSalonClases`)
     REFERENCES `horario`.`SalonClases` (`idSalonClases`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `horario`.`Profesor_has_ExperienciaEducativa1`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `horario`.`Profesor_has_ExperienciaEducativa1` (
+  `Profesor_idProfesor` INT NOT NULL,
+  `ExperienciaEducativa_nrc` INT NOT NULL,
+  PRIMARY KEY (`Profesor_idProfesor`, `ExperienciaEducativa_nrc`),
+  INDEX `fk_Profesor_has_ExperienciaEducativa1_ExperienciaEducativa1_idx` (`ExperienciaEducativa_nrc` ASC),
+  INDEX `fk_Profesor_has_ExperienciaEducativa1_Profesor1_idx` (`Profesor_idProfesor` ASC),
+  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa1_Profesor1`
+    FOREIGN KEY (`Profesor_idProfesor`)
+    REFERENCES `horario`.`Profesor` (`idProfesor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa1_ExperienciaEducativa1`
+    FOREIGN KEY (`ExperienciaEducativa_nrc`)
+    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
