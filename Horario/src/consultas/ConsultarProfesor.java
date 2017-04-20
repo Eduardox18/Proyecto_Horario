@@ -1,5 +1,6 @@
-package horario;
+package consultas;
 
+import horario.Connect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ public class ConsultarProfesor {
     private String correo = null;
     private Statement s;
     private Connection con; 
-    ResultSet rs = null;
+    private ResultSet rs = null;
         
     public void consultarAgenda() throws SQLException {
         
@@ -60,7 +61,7 @@ public class ConsultarProfesor {
                 paterno = rs.getString("apPaternoProfesor");
                 materno = rs.getString("apMaternoProfesor");
                     
-                System.out.println(idProfesor + ". Nombre: " + nombre + " " + paterno + " " + 
+                System.out.println(idProfesor + ". " + nombre + " " + paterno + " " + 
                         materno);
             }
         } catch (SQLException e) {

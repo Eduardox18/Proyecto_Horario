@@ -110,8 +110,4 @@ public class Connect
 	public static void setConnect(Connect connect) {
 		Connect.connect = connect;
 	}
-        
-         public static void main(String[] args) {
-        
-    }
 }

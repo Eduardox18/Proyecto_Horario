@@ -1,6 +1,6 @@
-package horario;
+package agregar;
 
-import java.security.Principal;
+import horario.Connect;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
