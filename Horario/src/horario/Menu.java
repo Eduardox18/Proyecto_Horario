@@ -77,4 +77,10 @@ public class Menu {
         }
     }
     
+    public void opcionDos() {
+        int nrc;
+        String nombreEE;
+        int creditosEE;
+        
+    }
 }
