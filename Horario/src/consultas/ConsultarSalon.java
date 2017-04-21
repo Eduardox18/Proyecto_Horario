@@ -1,3 +1,11 @@
+/**
+* Instrucciones de reutilización:
+*    void consultarLista()
+*    Propósito: Permite consultar la lista de salones existentes en la base de datos mediante un 
+*       SELECT.
+*    Limitaciones: Sólo realiza la consulta de los salones.
+*/
+
 package consultas;
 
 import horario.Connect;
@@ -8,7 +16,8 @@ import java.sql.Statement;
 
 /**
  *
- * @author lalo
+ * Clase que contiene el método para consultar los salones almacenados.
+ * @author Angel Eduardo Domínguez Delgado
  */
 public class ConsultarSalon {
     
@@ -18,6 +27,10 @@ public class ConsultarSalon {
     private Connection con;
     private ResultSet rs = null;
     
+    /**
+     * Función que conecta con la base de datos y recupera la lista de salones de clases.
+     * @throws SQLException 
+     */
     public void consultarLista () throws SQLException {
         
         con = new Connect().connection();

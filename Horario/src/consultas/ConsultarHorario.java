@@ -1,7 +1,13 @@
+/**
+* Instrucciones de reutilización:
+*    void realizarConsulta()
+*    Propósito: Permite consultar el horario completo de la base de datos mediante un SELECT.
+*    Limitaciones: Los horarios aparecen por día.
+*/
+
 package consultas;
 
 import horario.Connect;
-import horario.UnirTablas;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +15,8 @@ import java.sql.Statement;
 
 /**
  *
- * @author lalo
+ * Clase que contiene el método para consultar el horario de clases.
+ * @author Angel Eduardo Domínguez Delgado
  */
 public class ConsultarHorario {
     
@@ -39,6 +46,10 @@ public class ConsultarHorario {
             + "Profesor_has_ExperienciaEducativa.Profesor_idProfesor AND ExperienciaEducativa.nrc "
             + "= Profesor_has_ExperienciaEducativa.ExperienciaEducativa_nrc;";
     
+    /**
+     * Función que conecta con la base de datos y recupera el horario de clases.
+     * @throws SQLException 
+     */
     public void realizarConsulta() throws SQLException {
         con = new Connect().connection();
         

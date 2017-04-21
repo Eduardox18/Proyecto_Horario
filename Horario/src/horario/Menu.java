@@ -1,3 +1,22 @@
+/**
+* Instrucciones de reutilización:
+*    void mostrar()
+*    Propósito: Muestra el menú principal del programa.
+*    Limitaciones: Se navega mediante inserciones de números.
+* 
+*    void realizarOpcion(int op)
+*    Propósito: Realiza la acción ingresada por el usuario.
+*    Limitaciones: Ninguna.
+* 
+*    void opcionUno()
+*    Propósito: Muestra la primera opción del menú principal.
+*    Limitaciones: Ninguna.
+* 
+*    void opcionDos()
+*    Propósito: Muestra la segunda opción del menú principal.
+*    Limitaciones: Ninguna.
+*/
+
 package horario;
 
 import agregar.*;
@@ -6,14 +25,18 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
- *
- * @author lalo
+ * 
+ * Clase que contiene el menú principal y la invocación de todas sus acciones.
+ * @author Angel Eduardo Domínguez Delgado
  */
 public class Menu {
     
     static int op;
     static Scanner sc = new Scanner(System.in);
     
+    /**
+     * Función que muestra el menú principal.
+     */
     public void mostrar() {
         System.out.println("Horario de clases del alumno Ángel Eduardo Domínguez Delgado");
         System.out.println("1. Agenda de profesores");
@@ -22,6 +45,11 @@ public class Menu {
         System.out.println("4. Salir");
     }
     
+    /**
+     * Función que realiza la opción ingresada por el usuario.
+     * @param op
+     * @throws SQLException 
+     */
     public void realizarOpcion(int op) throws SQLException {
         switch(op) {
             case 1:
@@ -45,6 +73,10 @@ public class Menu {
         }
     }
     
+    /**
+     * Función que invoca los métodos contenidos en la primera opción del menú principal.
+     * @throws SQLException 
+     */
     public void opcionUno() throws SQLException {
         String nombre;
         String paterno;
@@ -84,6 +116,10 @@ public class Menu {
         }
     }
     
+    /**
+     * Función que invoca los métodos contenidos en la segunda opción del menú principal.
+     * @throws SQLException 
+     */
     public void opcionDos() throws SQLException {
         
         //Atributos ExperienciaEducativa

@@ -2,6 +2,10 @@ package horario;
 
 import java.sql.*;
 
+/**
+ * Clase que permite la conexión entre Netbeans y MySQL
+ * @author Angel Eduardo Domínguez Delgado
+ */
 public class Connect
 {
     private Connection conn;
@@ -12,6 +16,9 @@ public class Connect
     
     private static Connect connect;
 
+    /**
+     * Constructor que realiza la conexión con la base de datos.
+     */
     public Connect()
     {   
         host = "localhost";
@@ -82,32 +89,28 @@ public class Connect
     }
     
     public Connection connection() {
- 	   try
- 	   {    	       
+ 	   try {    	       
  	       return conn;
  	   }
- 	   finally
- 	   {
+ 	   finally {
  		   
  	   }
     }
     
     public void close() {
- 	   try
- 	   {
- 		   conn.close();
+ 	   try {
+               conn.close();
  	   }
- 	   catch (SQLException e)
- 	   {
+ 	   catch (SQLException e) {
  	       System.err.println ("Error: " + e.getMessage () + "\n" + e.getErrorCode ());
  	   }    	   
     }
-
-	public static Connect getConnect() {
-		return connect;
-	}
-
-	public static void setConnect(Connect connect) {
-		Connect.connect = connect;
-	}
+    
+    public static Connect getConnect() {
+        return connect;
+    }
+    
+    public static void setConnect(Connect connect) {
+        Connect.connect = connect;
+    }
 }

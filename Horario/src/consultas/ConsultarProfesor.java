@@ -1,3 +1,16 @@
+/**
+* Instrucciones de reutilización:
+* 
+*    void consultaAgenda()
+*    Propósito: Permite consultar todos los datos de los profesores registrados en la base de datos.
+*    Limitaciones: Ninguna.
+* 
+*    void consultarLista()
+*    Propósito: Permite consultar la lista de profesores existentes en la base de datos mediante 
+*       un SELECT.
+*    Limitaciones: Sólo recupera los nombres de los profesores.
+*/
+
 package consultas;
 
 import horario.Connect;
@@ -6,6 +19,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * 
+ * Clase que contiene el método para consultar la agenda y la lista de profesores almacenados.
+ * @author Angel Eduardo Domínguez Delgado
+ */
 public class ConsultarProfesor {
     
     private int idProfesor;
@@ -17,6 +35,10 @@ public class ConsultarProfesor {
     private Connection con; 
     private ResultSet rs = null;
         
+    /**
+     * Función que conecta con la base de datos y recupera la agenda de profesores.
+     * @throws SQLException 
+     */
     public void consultarAgenda() throws SQLException {
         
         con = new Connect().connection();
@@ -44,6 +66,10 @@ public class ConsultarProfesor {
         }
     }
     
+    /**
+     * Función que conecta con la base de datos y recupera la lista de profesores.
+     * @throws SQLException 
+     */
     public void consultarLista () throws SQLException {
         
         con = new Connect().connection();

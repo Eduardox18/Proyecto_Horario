@@ -1,3 +1,16 @@
+/**
+* Instrucciones de reutilización:
+* 
+*    void unir(int nrcx, int idpx, int diax, int horx, int salonx)
+*    Propósito: Realizar la inserción de llaves primarias en las tablas ternarias de la base
+*       de datos.
+*    Limitaciones: Ninguna.
+* 
+*    void update(String sQuery)
+*    Propósito: Relizar un update cualquiera en la base de datos.
+*    Limitaciones: Ninguna.
+*/
+
 package horario;
 
 import java.sql.Connection;

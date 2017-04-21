@@ -1,3 +1,10 @@
+/**
+* Instrucciones de reutilización:
+*    void consultarLista()
+*    Propósito: Permite consultar la lista de EE existentes en la base de datos mediante un SELECT.
+*    Limitaciones: Sólo realiza la consulta de las EE.
+*/
+
 package consultas;
 
 import horario.Connect;
@@ -8,7 +15,8 @@ import java.sql.Statement;
 
 /**
  *
- * @author lalo
+ * Clase que contiene el método para consultar las EE almacenadas.
+ * @author Angel Eduardo Domínguez Delgado
  */
 public class ConsultarEE {
     private Statement s;
@@ -17,6 +25,10 @@ public class ConsultarEE {
     private int nrc;
     private String nombreEE = null;
     
+    /**
+     * Función que conecta con la base de datos y recupera la lista de EE.
+     * @throws SQLException 
+     */
     public void consultarLista () throws SQLException {
         
         con = new Connect().connection();
