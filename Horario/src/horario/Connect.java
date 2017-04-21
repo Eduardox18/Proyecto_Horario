@@ -6,8 +6,7 @@ import java.sql.*;
  * Clase que permite la conexión entre Netbeans y MySQL
  * @author Angel Eduardo Domínguez Delgado
  */
-public class Connect
-{
+public class Connect {
     private Connection conn;
     private String host;
     private String db;
@@ -19,33 +18,29 @@ public class Connect
     /**
      * Constructor que realiza la conexión con la base de datos.
      */
-    public Connect()
-    {   
+    public Connect() {   
         host = "localhost";
     	db = "horario";
     	username = "Angel"; 
     	password = "horario";
-        try 
-        {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		//System.out.println("Conectando a la base...");
-		String url ="jdbc:mysql://"+host+"/"+db;
-		conn = DriverManager.getConnection(url, username, password);
-		//System.out.println("Conexion a BD establecida");		
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            //System.out.println("Conectando a la base...");
+            String url ="jdbc:mysql://"+host+"/"+db;
+            conn = DriverManager.getConnection(url, username, password);
+            //System.out.println("Conexion a BD establecida");		
 	} catch(SQLException ex) {
-		System.out.println("Error de mysql");
+            System.out.println("Error de mysql");
 	} catch (ClassNotFoundException e) {
-                e.printStackTrace();		
+            e.printStackTrace();		
 	} catch(Exception e) {
-		System.out.println("Se produjo un error inesperado: "+e.getMessage());
-
+            System.out.println("Se produjo un error inesperado: "+e.getMessage());
 	}
-	
 	connect = this;
-
     }
            
-    public Connect(String host, String db, String username, String password) throws ClassNotFoundException, SQLException
+    public Connect(String host, String db, String username, String password) 
+            throws ClassNotFoundException, SQLException
     {
             Class.forName("com.mysql.jdbc.Driver");
             this.host = host;
