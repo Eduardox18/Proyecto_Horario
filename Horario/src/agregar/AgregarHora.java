@@ -30,7 +30,7 @@ public class AgregarHora {
      */
     public void agregar(String horaInicio, String horaFin) throws SQLException {
         
-        String sentencia = "INSERT INTO Horario (horaInicioHorario, horaFinHorario) VALUES "
+        String sentencia = "INSERT INTO Hora (horaInicioHorario, horaFinHorario) VALUES "
                 + "('" + horaInicio + "', '" + horaFin + "');";
         
         try {

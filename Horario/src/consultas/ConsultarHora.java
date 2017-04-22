@@ -36,7 +36,7 @@ public class ConsultarHora {
         
         con = new Connect().connection();
         
-        String sQuery = "SELECT idHorario, horaInicioHorario, horaFinHorario from Horario;";
+        String sQuery = "SELECT idHorario, horaInicioHorario, horaFinHorario from Hora;";
         
         try {
             s = con.createStatement();

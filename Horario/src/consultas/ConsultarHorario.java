@@ -26,28 +26,14 @@ public class ConsultarHorario {
     private String nombreEE;
     private String nombreProfesor;
     private String nombreDia;
-    private String horaInicioHorario;
-    private String horaFinHorario;
-    private String noSalonClases;
+    private String hora;
+    private String noSalon;
     
-    String sQuery = "SELECT ExperienciaEducativa.nombreEE, Profesor.nombreProfesor, Dia.nombreDia, "
-            + "Horario.horaInicioHorario, Horario.horaFinHorario, SalonClases.noSalonClases FROM "
-            + "ExperienciaEducativa, Profesor, Dia, Horario, SalonClases, "
-            + "ExperienciaEducativa_has_SalonClases, Horario_has_Dia, "
-            + "Horario_has_ExperienciaEducativa, Profesor_has_ExperienciaEducativa WHERE "
-            + "ExperienciaEducativa.nrc = "
-            + "ExperienciaEducativa_has_SalonClases.ExperienciaEducativa_nrc AND "
-            + "SalonClases.idSalonClases = "
-            + "ExperienciaEducativa_has_SalonClases.SalonClases_idSalonClases AND "
-            + "Horario.idHorario = Horario_has_Dia.Horario_idHorario AND Dia.idDia = "
-            + "Horario_has_Dia.Dia_idDia AND Horario.idHorario = "
-            + "Horario_has_ExperienciaEducativa.Horario_idHorario AND ExperienciaEducativa.nrc = "
-            + "Horario_has_ExperienciaEducativa.ExperienciaEducativa_nrc AND Profesor.idProfesor = "
-            + "Profesor_has_ExperienciaEducativa.Profesor_idProfesor AND ExperienciaEducativa.nrc "
-            + "= Profesor_has_ExperienciaEducativa.ExperienciaEducativa_nrc;";
+    String sQuery = "SELECT nombreEE, nombreProfesor, nombreDia, hora, noSalon FROM Horario "
+            + "ORDER BY nombreDia AND hora;";
     
     /**
-     * Función que conecta con la base de datos y recupera el horario de clases.
+     * Función que conecta con la base de datos y recupera el horario de clases completo.
      * @throws SQLException 
      */
     public void realizarConsulta() throws SQLException {
@@ -61,15 +47,14 @@ public class ConsultarHorario {
                 nombreEE = rs.getString("nombreEE");
                 nombreProfesor = rs.getString("nombreProfesor");
                 nombreDia = rs.getString("nombreDia");
-                horaInicioHorario = rs.getString("horaInicioHorario");
-                horaFinHorario = rs.getString("horaFinHorario");
-                noSalonClases = rs.getString("noSalonClases");
+                hora = rs.getString("hora");
+                noSalon = rs.getString("noSalon");
                     
                 System.out.println("Día de la semana: " + nombreDia);
                 System.out.println("Experiencia Educativa: " + nombreEE);
                 System.out.println("Profesor: " + nombreProfesor);
-                System.out.println("Horario: " + horaInicioHorario + " - " + horaFinHorario);
-                System.out.println("Salón: " + noSalonClases);
+                System.out.println("Horario: " + hora);
+                System.out.println("Salón: " + noSalon);
                 System.out.println("-----------------------------------");
             }
         } catch (SQLException e) {

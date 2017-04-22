@@ -21,6 +21,7 @@ package horario;
 
 import agregar.*;
 import consultas.*;
+import eliminar.EliminarEEHorario;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -140,8 +141,9 @@ public class Menu {
         System.out.println("2. Agregar Hora (Intervalo)");
         System.out.println("3. Agregar Salón de clases");
         System.out.println("4. Agregar EE al horario de clases");
-        System.out.println("5. Consultar horario");
-        System.out.println("6. Regresar al menú principal");
+        System.out.println("5. Eliminar EE del horario de clases");
+        System.out.println("6. Consultar horario");
+        System.out.println("7. Regresar al menú principal");
         System.out.println("Elige una opción: ");
         op = sc.nextInt();
         sc.nextLine();
@@ -213,16 +215,26 @@ public class Menu {
                 int salonx = sc.nextInt();
                 sc.nextLine();
                 
-                UnirTablas ut = new UnirTablas();
-                ut.unir(nrcx, idpx, diax, horx, salonx);
+                AgregarHorario agh = new AgregarHorario();
+                agh.agregar(nrcx, idpx, diax, horx, salonx);
                 
                 System.out.println("Experiencia Educativa agregada con éxito.");
                 break;
             case 5:
+                EliminarEEHorario eee = new EliminarEEHorario();
+                System.out.println("Lista de EE en el Horario: ");
+                eee.consultarLista();
+                System.out.println("Número de EE que desea eliminar del horario: ");
+                int hor = sc.nextInt();
+                sc.nextLine();
+                eee.eliminarEE(hor);
+                System.out.println("Experiencia Educativa eliminada con éxito.");
+                break;
+            case 6:
                 ConsultarHorario coh = new ConsultarHorario();
                 coh.realizarConsulta();
                 break;
-            case 6:
+            case 7:
                 break;
             default:
                 System.out.println("Opción inválida");
