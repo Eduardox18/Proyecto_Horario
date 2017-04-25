@@ -1,8 +1,8 @@
 /**
 * Instrucciones de reutilización:
 *    void consultarLista()
-*    Propósito: Permite consultar la lista de los intervalos de horas existentes en la base de 
-*       datos mediante un SELECT.
+*    Propósito: Permite consultar la lista de los intervalos de horas existentes 
+*       en la base de datos mediante un SELECT.
 *    Limitaciones: Sólo realiza la consulta de los intervalos de horas.
 */
 
@@ -22,8 +22,7 @@ import java.sql.Statement;
 public class ConsultarHora {
     
     private int idHorario;
-    private String horaInicio = null;
-    private String horaFin = null;
+    private String intervaloHoras = null;
     private Statement s;
     private Connection con;
     private ResultSet rs = null;
@@ -36,7 +35,7 @@ public class ConsultarHora {
         
         con = new Connect().connection();
         
-        String sQuery = "SELECT idHorario, horaInicioHorario, horaFinHorario from Hora;";
+        String sQuery = "SELECT idHorario, intervaloHoras from Hora;";
         
         try {
             s = con.createStatement();
@@ -45,10 +44,9 @@ public class ConsultarHora {
             while (rs!=null && rs.next()) {
                 
                 idHorario = rs.getInt("idHorario");
-                horaInicio = rs.getString("horaInicioHorario");
-                horaFin = rs.getString("horaFinHorario");
+                intervaloHoras = rs.getString("intervaloHoras");
                     
-                System.out.println(idHorario + ". " + horaInicio + " - " + horaFin);
+                System.out.println(idHorario + ". " + intervaloHoras);
             }
         } catch (SQLException e) {
             System.out.println("Error SQL");

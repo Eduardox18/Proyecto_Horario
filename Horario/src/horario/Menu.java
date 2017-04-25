@@ -138,12 +138,11 @@ public class Menu {
         
         System.out.println("Menú de opciones de Horario");
         System.out.println("1. Agregar Experiencia Educativa");
-        System.out.println("2. Agregar Hora (Intervalo)");
-        System.out.println("3. Agregar Salón de clases");
-        System.out.println("4. Agregar EE al horario de clases");
-        System.out.println("5. Eliminar EE del horario de clases");
-        System.out.println("6. Consultar horario");
-        System.out.println("7. Regresar al menú principal");
+        System.out.println("2. Agregar Salón de clases");
+        System.out.println("3. Agregar EE al horario de clases");
+        System.out.println("4. Eliminar EE del horario de clases");
+        System.out.println("5. Consultar horario");
+        System.out.println("6. Regresar al menú principal");
         System.out.println("Elige una opción: ");
         op = sc.nextInt();
         sc.nextLine();
@@ -163,23 +162,13 @@ public class Menu {
                 System.out.println("Experiencia Educativa agregada con éxito.");
                 break;
             case 2:
-                System.out.println("El formato de la hora debe ser XX:XX (Ejemplo: 14:00)");
-                System.out.println("Hora de inicio: ");
-                horaInicio = sc.nextLine();
-                System.out.println("Hora de fin: ");
-                horaFin = sc.nextLine();
-                AgregarHora ah = new AgregarHora();
-                ah.agregar(horaInicio, horaFin);
-                System.out.println("Hora agregada con éxito.");
-                break;
-            case 3:
                 System.out.println("Salón en el que se impartirá la EE: ");
                 noSalonClases = sc.nextLine();
                 AgregarSalonClases asc = new AgregarSalonClases();
                 asc.agregar(noSalonClases);
                 System.out.println("Salón de clases agregado con éxito.");
                 break;
-            case 4:
+            case 3:
                 System.out.println("Lista de Experiencias Educativas: ");
                 ConsultarEE cee = new ConsultarEE();
                 cee.consultarLista();
@@ -217,10 +206,8 @@ public class Menu {
                 
                 AgregarHorario agh = new AgregarHorario();
                 agh.agregar(nrcx, idpx, diax, horx, salonx);
-                
-                System.out.println("Experiencia Educativa agregada con éxito.");
                 break;
-            case 5:
+            case 4:
                 EliminarEEHorario eee = new EliminarEEHorario();
                 System.out.println("Lista de EE en el Horario: ");
                 eee.consultarLista();
@@ -230,11 +217,11 @@ public class Menu {
                 eee.eliminarEE(hor);
                 System.out.println("Experiencia Educativa eliminada con éxito.");
                 break;
-            case 6:
+            case 5:
                 ConsultarHorario coh = new ConsultarHorario();
                 coh.realizarConsulta();
                 break;
-            case 7:
+            case 6:
                 break;
             default:
                 System.out.println("Opción inválida");

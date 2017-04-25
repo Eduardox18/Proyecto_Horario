@@ -1,220 +1,206 @@
--- MySQL Workbench Forward Engineering
+-- MySQL dump 10.13  Distrib 5.7.18, for macos10.12 (x86_64)
+--
+-- Host: localhost    Database: horario
+-- ------------------------------------------------------
+-- Server version	5.7.18
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- -----------------------------------------------------
--- Schema horario
--- -----------------------------------------------------
+--
+-- Table structure for table `Alumno`
+--
 
--- -----------------------------------------------------
--- Schema horario
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `horario` DEFAULT CHARACTER SET utf8 ;
-USE `horario` ;
+DROP TABLE IF EXISTS `Alumno`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Alumno` (
+  `matricula` varchar(9) NOT NULL,
+  `nombreAlumno` varchar(45) NOT NULL,
+  `apPaternoAlumno` varchar(45) NOT NULL,
+  `apMaternoAlumno` varchar(45) DEFAULT NULL,
+  `fechaNacAlumno` varchar(45) NOT NULL,
+  `emailAlumno` varchar(45) NOT NULL,
+  PRIMARY KEY (`matricula`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`Profesor`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Profesor` (
-  `idProfesor` INT NOT NULL AUTO_INCREMENT,
-  `nombreProfesor` VARCHAR(45) NOT NULL,
-  `apPaternoProfesor` VARCHAR(45) NOT NULL,
-  `apMaternoProfesor` VARCHAR(45) NULL,
-  `emailProfesor` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idProfesor`))
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Alumno`
+--
 
+LOCK TABLES `Alumno` WRITE;
+/*!40000 ALTER TABLE `Alumno` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Alumno` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`Horario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Horario` (
-  `idHorario` INT NOT NULL AUTO_INCREMENT,
-  `horaInicioHorario` VARCHAR(10) NOT NULL,
-  `horaFinHorario` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idHorario`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `Dia`
+--
 
+DROP TABLE IF EXISTS `Dia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Dia` (
+  `idDia` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreDia` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idDia`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`ExperienciaEducativa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`ExperienciaEducativa` (
-  `nrc` INT NOT NULL,
-  `nombreEE` VARCHAR(45) NOT NULL,
-  `creditosEE` INT NULL,
-  PRIMARY KEY (`nrc`))
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Dia`
+--
 
+LOCK TABLES `Dia` WRITE;
+/*!40000 ALTER TABLE `Dia` DISABLE KEYS */;
+INSERT INTO `Dia` VALUES (1,'Lunes'),(2,'Martes'),(3,'Miércoles'),(4,'Jueves'),(5,'Viernes'),(6,'Sábado'),(7,'Domingo');
+/*!40000 ALTER TABLE `Dia` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`SalonClases`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`SalonClases` (
-  `idSalonClases` INT NOT NULL AUTO_INCREMENT,
-  `noSalonClases` INT NOT NULL,
-  PRIMARY KEY (`idSalonClases`))
-ENGINE = InnoDB;
+--
+-- Table structure for table `ExperienciaEducativa`
+--
 
+DROP TABLE IF EXISTS `ExperienciaEducativa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ExperienciaEducativa` (
+  `nrc` int(11) NOT NULL,
+  `nombreEE` varchar(45) NOT NULL,
+  `creditosEE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nrc`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`Alumno`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Alumno` (
-  `matricula` VARCHAR(9) NOT NULL,
-  `nombreAlumno` VARCHAR(45) NOT NULL,
-  `apPaternoAlumno` VARCHAR(45) NOT NULL,
-  `apMaternoAlumno` VARCHAR(45) NULL,
-  `fechaNacAlumno` VARCHAR(45) NOT NULL,
-  `emailAlumno` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`matricula`))
-ENGINE = InnoDB;
+--
+-- Dumping data for table `ExperienciaEducativa`
+--
 
+LOCK TABLES `ExperienciaEducativa` WRITE;
+/*!40000 ALTER TABLE `ExperienciaEducativa` DISABLE KEYS */;
+INSERT INTO `ExperienciaEducativa` VALUES (21829,'Construcción de Software',9),(27381,'Paradigmas de Programación',10),(83291,'Sistemas Operativos',10);
+/*!40000 ALTER TABLE `ExperienciaEducativa` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`Profesor_has_ExperienciaEducativa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Profesor_has_ExperienciaEducativa` (
-  `Profesor_noPersonal` INT NOT NULL,
-  `ExperienciaEducativa_nrc` INT NOT NULL,
-  PRIMARY KEY (`Profesor_noPersonal`, `ExperienciaEducativa_nrc`),
-  INDEX `fk_Profesor_has_ExperienciaEducativa_ExperienciaEducativa1_idx` (`ExperienciaEducativa_nrc` ASC),
-  INDEX `fk_Profesor_has_ExperienciaEducativa_Profesor_idx` (`Profesor_noPersonal` ASC),
-  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa_Profesor`
-    FOREIGN KEY (`Profesor_noPersonal`)
-    REFERENCES `horario`.`Profesor` (`idProfesor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa_ExperienciaEducativa1`
-    FOREIGN KEY (`ExperienciaEducativa_nrc`)
-    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `Hora`
+--
 
+DROP TABLE IF EXISTS `Hora`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Hora` (
+  `idHorario` int(11) NOT NULL AUTO_INCREMENT,
+  `intervaloHoras` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idHorario`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`Horario_has_ExperienciaEducativa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Horario_has_ExperienciaEducativa` (
-  `Horario_idHorario` INT NOT NULL,
-  `ExperienciaEducativa_nrc` INT NOT NULL,
-  PRIMARY KEY (`Horario_idHorario`, `ExperienciaEducativa_nrc`),
-  INDEX `fk_Horario_has_ExperienciaEducativa_ExperienciaEducativa1_idx` (`ExperienciaEducativa_nrc` ASC),
-  INDEX `fk_Horario_has_ExperienciaEducativa_Horario1_idx` (`Horario_idHorario` ASC),
-  CONSTRAINT `fk_Horario_has_ExperienciaEducativa_Horario1`
-    FOREIGN KEY (`Horario_idHorario`)
-    REFERENCES `horario`.`Horario` (`idHorario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Horario_has_ExperienciaEducativa_ExperienciaEducativa1`
-    FOREIGN KEY (`ExperienciaEducativa_nrc`)
-    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Hora`
+--
 
+LOCK TABLES `Hora` WRITE;
+/*!40000 ALTER TABLE `Hora` DISABLE KEYS */;
+INSERT INTO `Hora` VALUES (1,'7:00 - 8:00'),(2,'8:00 - 9:00'),(3,'9:00 - 10:00'),(4,'10:00 - 11:00'),(5,'11:00 - 12:00'),(6,'12:00 - 13:00'),(7,'13:00 - 14:00'),(8,'14:00 - 15:00'),(9,'15:00 - 16:00'),(10,'16:00 - 17:00'),(11,'17:00 - 18:00'),(12,'18:00 - 19:00'),(13,'19:00 - 20:00'),(14,'20:00 - 21:00');
+/*!40000 ALTER TABLE `Hora` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`ExperienciaEducativa_has_Alumno`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`ExperienciaEducativa_has_Alumno` (
-  `ExperienciaEducativa_nrc` INT NOT NULL,
-  `Alumno_matricula` VARCHAR(9) NOT NULL,
-  PRIMARY KEY (`ExperienciaEducativa_nrc`, `Alumno_matricula`),
-  INDEX `fk_ExperienciaEducativa_has_Alumno_Alumno1_idx` (`Alumno_matricula` ASC),
-  INDEX `fk_ExperienciaEducativa_has_Alumno_ExperienciaEducativa1_idx` (`ExperienciaEducativa_nrc` ASC),
-  CONSTRAINT `fk_ExperienciaEducativa_has_Alumno_ExperienciaEducativa1`
-    FOREIGN KEY (`ExperienciaEducativa_nrc`)
-    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ExperienciaEducativa_has_Alumno_Alumno1`
-    FOREIGN KEY (`Alumno_matricula`)
-    REFERENCES `horario`.`Alumno` (`matricula`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `Horario`
+--
 
+DROP TABLE IF EXISTS `Horario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Horario` (
+  `idHorario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreEE` varchar(45) NOT NULL,
+  `nombreProfesor` varchar(45) NOT NULL COMMENT '	',
+  `nombreDia` varchar(20) NOT NULL,
+  `hora` varchar(20) DEFAULT NULL,
+  `noSalon` varchar(20) NOT NULL,
+  PRIMARY KEY (`idHorario`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`ExperienciaEducativa_has_SalonClases`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`ExperienciaEducativa_has_SalonClases` (
-  `ExperienciaEducativa_nrc` INT NOT NULL,
-  `SalonClases_idSalonClases` INT NOT NULL,
-  PRIMARY KEY (`ExperienciaEducativa_nrc`, `SalonClases_idSalonClases`),
-  INDEX `fk_ExperienciaEducativa_has_SalonClases_SalonClases1_idx` (`SalonClases_idSalonClases` ASC),
-  INDEX `fk_ExperienciaEducativa_has_SalonClases_ExperienciaEducativ_idx` (`ExperienciaEducativa_nrc` ASC),
-  CONSTRAINT `fk_ExperienciaEducativa_has_SalonClases_ExperienciaEducativa1`
-    FOREIGN KEY (`ExperienciaEducativa_nrc`)
-    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ExperienciaEducativa_has_SalonClases_SalonClases1`
-    FOREIGN KEY (`SalonClases_idSalonClases`)
-    REFERENCES `horario`.`SalonClases` (`idSalonClases`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Horario`
+--
 
+LOCK TABLES `Horario` WRITE;
+/*!40000 ALTER TABLE `Horario` DISABLE KEYS */;
+INSERT INTO `Horario` VALUES (1,' Construcción de Software',' Fredy Castañeda','Lunes','7:00 - 8:00','104'),(2,' Construcción de Software',' Fredy Castañeda','Martes','7:00 - 8:00','104'),(4,' Construcción de Software',' Fredy Castañeda','Miércoles','7:00 - 8:00','104'),(5,' Construcción de Software',' Fredy Castañeda','Jueves','7:00 - 8:00','104');
+/*!40000 ALTER TABLE `Horario` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`Profesor_has_ExperienciaEducativa1`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Profesor_has_ExperienciaEducativa1` (
-  `Profesor_idProfesor` INT NOT NULL,
-  `ExperienciaEducativa_nrc` INT NOT NULL,
-  PRIMARY KEY (`Profesor_idProfesor`, `ExperienciaEducativa_nrc`),
-  INDEX `fk_Profesor_has_ExperienciaEducativa1_ExperienciaEducativa1_idx` (`ExperienciaEducativa_nrc` ASC),
-  INDEX `fk_Profesor_has_ExperienciaEducativa1_Profesor1_idx` (`Profesor_idProfesor` ASC),
-  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa1_Profesor1`
-    FOREIGN KEY (`Profesor_idProfesor`)
-    REFERENCES `horario`.`Profesor` (`idProfesor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Profesor_has_ExperienciaEducativa1_ExperienciaEducativa1`
-    FOREIGN KEY (`ExperienciaEducativa_nrc`)
-    REFERENCES `horario`.`ExperienciaEducativa` (`nrc`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `Profesor`
+--
 
+DROP TABLE IF EXISTS `Profesor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Profesor` (
+  `idProfesor` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreProfesor` varchar(45) NOT NULL,
+  `apPaternoProfesor` varchar(45) NOT NULL,
+  `apMaternoProfesor` varchar(45) DEFAULT NULL,
+  `emailProfesor` varchar(45) NOT NULL,
+  PRIMARY KEY (`idProfesor`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- -----------------------------------------------------
--- Table `horario`.`Dia`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Dia` (
-  `idDia` INT NOT NULL AUTO_INCREMENT,
-  `nombreDia` VARCHAR(20) NULL,
-  PRIMARY KEY (`idDia`))
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Profesor`
+--
 
+LOCK TABLES `Profesor` WRITE;
+/*!40000 ALTER TABLE `Profesor` DISABLE KEYS */;
+INSERT INTO `Profesor` VALUES (1,'Oscar José Luis','Cruz','Reyes','ocruz@gmail.com'),(2,'Fredy','Castañeda','Sánchez','fredyacademia@gmail.com'),(3,'Xavier','Limón','Riaño','limon666@gmail.com');
+/*!40000 ALTER TABLE `Profesor` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- -----------------------------------------------------
--- Table `horario`.`Horario_has_Dia`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `horario`.`Horario_has_Dia` (
-  `Horario_idHorario` INT NOT NULL,
-  `Dia_idDia` INT NOT NULL,
-  PRIMARY KEY (`Horario_idHorario`, `Dia_idDia`),
-  INDEX `fk_Horario_has_Dia_Dia1_idx` (`Dia_idDia` ASC),
-  INDEX `fk_Horario_has_Dia_Horario1_idx` (`Horario_idHorario` ASC),
-  CONSTRAINT `fk_Horario_has_Dia_Horario1`
-    FOREIGN KEY (`Horario_idHorario`)
-    REFERENCES `horario`.`Horario` (`idHorario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Horario_has_Dia_Dia1`
-    FOREIGN KEY (`Dia_idDia`)
-    REFERENCES `horario`.`Dia` (`idDia`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `SalonClases`
+--
 
+DROP TABLE IF EXISTS `SalonClases`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SalonClases` (
+  `idSalonClases` int(11) NOT NULL AUTO_INCREMENT,
+  `noSalonClases` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`idSalonClases`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+--
+-- Dumping data for table `SalonClases`
+--
+
+LOCK TABLES `SalonClases` WRITE;
+/*!40000 ALTER TABLE `SalonClases` DISABLE KEYS */;
+INSERT INTO `SalonClases` VALUES (1,'104');
+/*!40000 ALTER TABLE `SalonClases` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-04-24 18:31:44

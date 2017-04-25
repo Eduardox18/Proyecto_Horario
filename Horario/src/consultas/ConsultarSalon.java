@@ -1,8 +1,8 @@
 /**
 * Instrucciones de reutilización:
 *    void consultarLista()
-*    Propósito: Permite consultar la lista de salones existentes en la base de datos mediante un 
-*       SELECT.
+*    Propósito: Permite consultar la lista de salones existentes en la base 
+*       de datos mediante un SELECT.
 *    Limitaciones: Sólo realiza la consulta de los salones.
 */
 

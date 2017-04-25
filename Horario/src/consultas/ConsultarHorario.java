@@ -1,7 +1,8 @@
 /**
 * Instrucciones de reutilización:
 *    void realizarConsulta()
-*    Propósito: Permite consultar el horario completo de la base de datos mediante un SELECT.
+*    Propósito: Permite consultar el horario completo de la base de datos 
+*       mediante un SELECT.
 *    Limitaciones: Los horarios aparecen por día.
 */
 
@@ -30,7 +31,7 @@ public class ConsultarHorario {
     private String noSalon;
     
     String sQuery = "SELECT nombreEE, nombreProfesor, nombreDia, hora, noSalon FROM Horario "
-            + "ORDER BY nombreDia AND hora;";
+            + "ORDER BY nombreEE;";
     
     /**
      * Función que conecta con la base de datos y recupera el horario de clases completo.

@@ -2,12 +2,13 @@
 * Instrucciones de reutilización:
 * 
 *    void consultaAgenda()
-*    Propósito: Permite consultar todos los datos de los profesores registrados en la base de datos.
+*    Propósito: Permite consultar todos los datos de los profesores registrados 
+*       en la base de datos.
 *    Limitaciones: Ninguna.
 * 
 *    void consultarLista()
-*    Propósito: Permite consultar la lista de profesores existentes en la base de datos mediante 
-*       un SELECT.
+*    Propósito: Permite consultar la lista de profesores existentes en la base 
+*       de datos mediante un SELECT.
 *    Limitaciones: Sólo recupera los nombres de los profesores.
 */
 

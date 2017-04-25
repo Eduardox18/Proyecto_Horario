@@ -1,7 +1,8 @@
 /**
 * Instrucciones de reutilización:
 *    void agregar(String noSalon)
-*    Propósito: Agregar un salón de clases a la base de datos mediante un INSERT.
+*    Propósito: Agregar un salón de clases a la base de datos mediante un 
+*       INSERT.
 *    Limitaciones: No se pueden agregar más campos de los especificados.
 */
 

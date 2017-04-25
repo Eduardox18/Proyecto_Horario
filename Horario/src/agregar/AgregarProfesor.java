@@ -30,7 +30,8 @@ public class AgregarProfesor {
      * @param correo Correo electrónico del profesor.
      * @throws SQLException 
      */
-    public void agregar(String nombre, String paterno, String materno, String correo) 
+    public void agregar(String nombre, String paterno, String materno, 
+            String correo) 
             throws SQLException {
         String sentencia;
         sentencia = "INSERT INTO Profesor (nombreProfesor, apPaternoProfesor, apMaternoProfesor"
